@@ -32,14 +32,21 @@ public class ControladorUsuarioAdmin implements ActionListener {
         this.menuUsuarioAdmin.setLocationRelativeTo(null);
         this.menuUsuarioAdmin.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.menuUsuarioAdmin.getCrearButton1().addActionListener(this);
+        this.menuUsuarioAdmin.getBuscarButton().addActionListener(this);
 
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == menuUsuarioAdmin.getCrearButton1()) {
-            menuUsuarioAdmin.getPbusquedad().setVisible(false);
-            menuUsuarioAdmin.getPanelCrear().setVisible(true);
-            menuUsuarioAdmin.getjPanelContaint().add(menuUsuarioAdmin.getPanelCrear());
+            menuUsuarioAdmin.getJpanelBuscar().setVisible(false);
+            menuUsuarioAdmin.getJpanelCrear().setVisible(true);
+
+
+        } else if (e.getSource() == menuUsuarioAdmin.getBuscarButton()) {
+            menuUsuarioAdmin.getJpanelCrear().setVisible(false);
+            menuUsuarioAdmin.getJpanelBuscar().setVisible(true);
+
+
         }
     }
 

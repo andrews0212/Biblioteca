@@ -5,44 +5,64 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 
 public class VistaCrear {
-    private JTextField textField1;
-    private JTextField textField2;
-    private JPanel panelCalendar;
-    private JPanel PanelCrear;
+    private JPanel panel1;
+    private JTextField textFieldUsuario;
+    private JTextField textFieldEjemplar;
+    private JButton crearButton;
+    private JPanel JpanelCalendar;
+    private JDateChooser dateChooser;
+
 
     public VistaCrear() {
-    panelCalendar.add(new JDateChooser());
+        dateChooser = new JDateChooser();
+        JpanelCalendar.add(dateChooser);
     }
 
-    public JTextField getTextField1() {
-        return textField1;
+    public JPanel getPanel1() {
+        return panel1;
     }
 
-    public void setTextField1(JTextField textField1) {
-        this.textField1 = textField1;
+    public void setPanel1(JPanel panel1) {
+        this.panel1 = panel1;
     }
 
-    public JTextField getTextField2() {
-        return textField2;
+    public JTextField getTextFieldUsuario() {
+        return textFieldUsuario;
     }
 
-    public void setTextField2(JTextField textField2) {
-        this.textField2 = textField2;
+    public void setTextFieldUsuario(JTextField textFieldUsuario) {
+        this.textFieldUsuario = textFieldUsuario;
     }
 
-    public JPanel getPanelCalendar() {
-        return panelCalendar;
+    public JTextField getTextFieldEjemplar() {
+        return textFieldEjemplar;
     }
 
-    public void setPanelCalendar(JPanel panelCalendar) {
-        this.panelCalendar = panelCalendar;
+    public void setTextFieldEjemplar(JTextField textFieldEjemplar) {
+        this.textFieldEjemplar = textFieldEjemplar;
     }
 
-    public JPanel getPanelCrear() {
-        return PanelCrear;
+    public JButton getCrearButton() {
+        return crearButton;
     }
 
-    public void setPanelCrear(JPanel panelCrear) {
-        PanelCrear = panelCrear;
+    public void setCrearButton(JButton crearButton) {
+        this.crearButton = crearButton;
+    }
+
+    public JPanel getJpanelCalendar() {
+        return JpanelCalendar;
+    }
+
+    public void setJpanelCalendar(JPanel jpanelCalendar) {
+        JpanelCalendar = jpanelCalendar;
+    }
+
+    public JDateChooser getDateChooser() {
+        return dateChooser;
+    }
+
+    public void setDateChooser(JDateChooser dateChooser) {
+        this.dateChooser = dateChooser;
     }
 }

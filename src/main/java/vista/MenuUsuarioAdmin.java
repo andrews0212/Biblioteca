@@ -1,6 +1,8 @@
 package vista;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuUsuarioAdmin extends JDialog {
     private JPanel contentPane;
@@ -9,41 +11,27 @@ public class MenuUsuarioAdmin extends JDialog {
     private JButton modificarButton;
     private JButton eliminarButton;
     private JPanel jPanelContaint;
-    private VistaCrear vistaCrear;
     private VistaBuscar vistaBuscar;
-    private JPanel pbusquedad;
-    private JPanel panelCrear;
+    private JPanel jpanelBuscar;
+    private VistaCrear vistaCrear;
+    private JPanel jpanelCrear;
 
 
     public MenuUsuarioAdmin() {
         setContentPane(contentPane);
         setModal(true);
-        vistaCrear = new VistaCrear();
         vistaBuscar = new VistaBuscar();
-        pbusquedad = vistaBuscar.getPanelBusqueda();
-        panelCrear = vistaCrear.getPanelCrear();
+        vistaCrear = new VistaCrear();
 
-        jPanelContaint.add(pbusquedad);
+        jpanelCrear = vistaCrear.getPanel1();
+        jpanelBuscar = vistaBuscar.getPanelBusqueda();
+
+
+        jPanelContaint.add(jpanelCrear);
+        jPanelContaint.add(jpanelBuscar);
+
 
     }
-
-    public JPanel getPbusquedad() {
-        return pbusquedad;
-    }
-
-    public void setPbusquedad(JPanel pbusquedad) {
-        this.pbusquedad = pbusquedad;
-    }
-
-    public JPanel getjPanelContaint() {
-        return jPanelContaint;
-    }
-
-    public void setjPanelContaint(JPanel jPanelContaint) {
-        this.jPanelContaint = jPanelContaint;
-    }
-
-
 
     public JButton getBuscarButton() {
         return buscarButton;
@@ -77,7 +65,29 @@ public class MenuUsuarioAdmin extends JDialog {
         this.eliminarButton = eliminarButton;
     }
 
+    public JPanel getjPanelContaint() {
+        return jPanelContaint;
+    }
 
+    public void setjPanelContaint(JPanel jPanelContaint) {
+        this.jPanelContaint = jPanelContaint;
+    }
+
+    public VistaBuscar getVistaBuscar() {
+        return vistaBuscar;
+    }
+
+    public void setVistaBuscar(VistaBuscar vistaBuscar) {
+        this.vistaBuscar = vistaBuscar;
+    }
+
+    public JPanel getJpanelBuscar() {
+        return jpanelBuscar;
+    }
+
+    public void setJpanelBuscar(JPanel jpanelBuscar) {
+        this.jpanelBuscar = jpanelBuscar;
+    }
 
     public VistaCrear getVistaCrear() {
         return vistaCrear;
@@ -87,18 +97,14 @@ public class MenuUsuarioAdmin extends JDialog {
         this.vistaCrear = vistaCrear;
     }
 
-    public JPanel getPanelCrear() {
-        return panelCrear;
+    public JPanel getJpanelCrear() {
+        return jpanelCrear;
     }
 
-    public void setPanelCrear(JPanel panelCrear) {
-        this.panelCrear = panelCrear;
-    }
-
-    public static void main(String[] args) {
-        MenuUsuarioAdmin dialog = new MenuUsuarioAdmin();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
+    public void setJpanelCrear(JPanel jpanelCrear) {
+        this.jpanelCrear = jpanelCrear;
     }
 }
+
+
+
