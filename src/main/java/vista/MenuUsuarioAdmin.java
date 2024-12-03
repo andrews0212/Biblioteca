@@ -1,6 +1,8 @@
 package vista;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuUsuarioAdmin extends JDialog {
     private JPanel contentPane;
@@ -11,8 +13,8 @@ public class MenuUsuarioAdmin extends JDialog {
     private JPanel jPanelContaint;
     private VistaCrear vistaCrear;
     private VistaBuscar vistaBuscar;
-    private JPanel pbusquedad;
-    private JPanel panelCrear;
+    private JPanel jpanelBuscar;
+    private JPanel jpanelCrear;
 
 
     public MenuUsuarioAdmin() {
@@ -20,20 +22,19 @@ public class MenuUsuarioAdmin extends JDialog {
         setModal(true);
         vistaCrear = new VistaCrear();
         vistaBuscar = new VistaBuscar();
-        pbusquedad = vistaBuscar.getPanelBusqueda();
-        panelCrear = vistaCrear.getPanelCrear();
 
-        jPanelContaint.add(pbusquedad);
+
+        jpanelBuscar = vistaBuscar.getPanelBusqueda();
+        jpanelCrear = vistaCrear.getPanelCrear();
+
+        jPanelContaint.add(jpanelCrear);
+        jPanelContaint.add(jpanelBuscar);
+
+
 
     }
 
-    public JPanel getPbusquedad() {
-        return pbusquedad;
-    }
 
-    public void setPbusquedad(JPanel pbusquedad) {
-        this.pbusquedad = pbusquedad;
-    }
 
     public JPanel getjPanelContaint() {
         return jPanelContaint;
@@ -43,7 +44,13 @@ public class MenuUsuarioAdmin extends JDialog {
         this.jPanelContaint = jPanelContaint;
     }
 
+    public VistaBuscar getVistaBuscar() {
+        return vistaBuscar;
+    }
 
+    public void setVistaBuscar(VistaBuscar vistaBuscar) {
+        this.vistaBuscar = vistaBuscar;
+    }
 
     public JButton getBuscarButton() {
         return buscarButton;
@@ -87,18 +94,16 @@ public class MenuUsuarioAdmin extends JDialog {
         this.vistaCrear = vistaCrear;
     }
 
-    public JPanel getPanelCrear() {
-        return panelCrear;
-    }
 
-    public void setPanelCrear(JPanel panelCrear) {
-        this.panelCrear = panelCrear;
-    }
 
     public static void main(String[] args) {
         MenuUsuarioAdmin dialog = new MenuUsuarioAdmin();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
