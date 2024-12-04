@@ -22,9 +22,9 @@ public class MemoriaGN<T,ID> {
         dao.add(t);
         list.add(t);
     }
-    public void remove(ID id){
-        dao.delete(id);
-        list.remove(dao.find(id));
+    public void remove(T t){
+        dao.delete(t);
+        list.remove(t);
     }
     public void update(T t){
         dao.update(t);
@@ -69,9 +69,6 @@ public class MemoriaGN<T,ID> {
         this.dao = dao;
     }
 
-    public static void main(String[] args) {
-        MemoriaGN<Usuario, Integer> m = new MemoriaGN<>(Usuario.class);
-        m.remove(1);
-    }
+
 
 }

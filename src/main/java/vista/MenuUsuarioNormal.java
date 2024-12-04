@@ -7,7 +7,7 @@ public class MenuUsuarioNormal extends JDialog {
     private JPanel contentPane;
     private JScrollPane jScrollPane;
     private JTable table1;
-
+    private JPanel jPanelContain;
 
 
     public MenuUsuarioNormal() {

@@ -48,6 +48,9 @@ public class ControladorUsuarioAdmin implements ActionListener {
         this.menuUsuarioAdmin.getVistaCrear().getCrearButton().addActionListener(this);
 
         this.menuUsuarioAdmin.getVistaModificar().getModificarButton().addActionListener(this);
+        this.menuUsuarioAdmin.getVistaEliminar().getEliminarButton().addActionListener(this);
+
+
 
     }
 
@@ -153,18 +156,18 @@ public class ControladorUsuarioAdmin implements ActionListener {
 
                     try{
                         gestionPrestamo.crearPrestamo(usuario,ejemplar);
-                        JOptionPane.showInputDialog("Si se ha podido crear el prestamo");
+                        JOptionPane.showMessageDialog(null, "Si se ha podido crear el prestamo", "Información", JOptionPane.INFORMATION_MESSAGE);
                     }catch (Exception ex){
                         JOptionPane.showMessageDialog(null, ex.getMessage());
                     }
 
 
                 } else{
-                    JOptionPane.showInputDialog("El ejemplar no esta disponible");
+                    JOptionPane.showMessageDialog(null, "El ejemplar no esta disponible", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }
 
             } else {
-                JOptionPane.showInputDialog("No se ha podido crear el prestamo");
+                JOptionPane.showMessageDialog(null, "No se ha podido crear el prestamo", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
 
@@ -208,6 +211,20 @@ public class ControladorUsuarioAdmin implements ActionListener {
 
     }
 
+    public void accionEliminar(ActionEvent e){
+        if (e.getSource() == menuUsuarioAdmin.getVistaEliminar().getEliminarButton()) {
+            int idPrestamo = Integer.parseInt(menuUsuarioAdmin.getVistaEliminar().getTextFieldPrestamo().getText());
+            Prestamo p = gestionPrestamo.getMemoriaPrestamo().findById(idPrestamo);
+            if (p != null) {
+                gestionPrestamo.getMemoriaPrestamo().remove(p);
+                JOptionPane.showMessageDialog(null, "Se ha eliminado Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            } else{
+                JOptionPane.showMessageDialog(null, "No hay prestamo", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        }
+    }
+
 
 
 
@@ -217,6 +234,7 @@ public class ControladorUsuarioAdmin implements ActionListener {
         accionBusqueda(e);
         accionCrear(e);
         accionModificar(e);
+        accionEliminar(e);
 
 
     }

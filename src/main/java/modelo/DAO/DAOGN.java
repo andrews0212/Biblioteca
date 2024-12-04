@@ -24,9 +24,8 @@ public class DAOGN<T,ID>{
         em.merge(t);
         em.getTransaction().commit();
     }
-    public void delete(ID id) {
+    public void delete(T t) {
         em.getTransaction().begin();
-        T t = em.find(entityClass, id);
         em.remove(t);
         em.getTransaction().commit();
 
