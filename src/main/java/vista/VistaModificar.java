@@ -4,20 +4,18 @@ import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 
-public class ModificarPrestamo {
+public class VistaModificar {
     private JPanel panel1;
     private JTextField textFieldPrestamos;
     private JTextField textFieldUsuario;
     private JTextField textFieldEjemplar;
-    private JTextField textField4;
-    private JTextField textField5;
     private JButton modificarButton;
     private JPanel jpanelCalendar1;
     private JPanel jpanelCalendar2;
     private JDateChooser dateChooserInicio;
     private JDateChooser dateChooserFin;
 
-    public ModificarPrestamo() {
+    public VistaModificar() {
         dateChooserInicio = new JDateChooser();
         dateChooserFin = new JDateChooser();
         dateChooserInicio.setDateFormatString("dd/MM/yyyy");
@@ -58,21 +56,6 @@ public class ModificarPrestamo {
         this.textFieldEjemplar = textFieldEjemplar;
     }
 
-    public JTextField getTextField4() {
-        return textField4;
-    }
-
-    public void setTextField4(JTextField textField4) {
-        this.textField4 = textField4;
-    }
-
-    public JTextField getTextField5() {
-        return textField5;
-    }
-
-    public void setTextField5(JTextField textField5) {
-        this.textField5 = textField5;
-    }
 
     public JButton getModificarButton() {
         return modificarButton;

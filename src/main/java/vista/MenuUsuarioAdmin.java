@@ -1,8 +1,6 @@
 package vista;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MenuUsuarioAdmin extends JDialog {
     private JPanel contentPane;
@@ -15,7 +13,7 @@ public class MenuUsuarioAdmin extends JDialog {
     private JPanel jpanelBuscar;
     private VistaCrear vistaCrear;
     private JPanel jpanelCrear;
-    private ModificarPrestamo vistaPrestamo;
+    private VistaModificar vistaPrestamo;
     private JPanel jpanelPrestamo;
     private VistaEliminar vistaEliminar;
     private JPanel jpanelEliminar;
@@ -26,7 +24,7 @@ public class MenuUsuarioAdmin extends JDialog {
         setModal(true);
         vistaBuscar = new VistaBuscar();
         vistaCrear = new VistaCrear();
-        vistaPrestamo = new ModificarPrestamo();
+        vistaPrestamo = new VistaModificar();
         vistaEliminar = new VistaEliminar();
 
         jpanelCrear = vistaCrear.getPanel1();
@@ -60,11 +58,11 @@ public class MenuUsuarioAdmin extends JDialog {
         this.jpanelEliminar = jpanelEliminar;
     }
 
-    public ModificarPrestamo getVistaPrestamo() {
+    public VistaModificar getVistaModificar() {
         return vistaPrestamo;
     }
 
-    public void setVistaPrestamo(ModificarPrestamo vistaPrestamo) {
+    public void setVistaPrestamo(VistaModificar vistaPrestamo) {
         this.vistaPrestamo = vistaPrestamo;
     }
 

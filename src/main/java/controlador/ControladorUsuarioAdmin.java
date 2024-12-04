@@ -15,8 +15,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
 
 public class ControladorUsuarioAdmin implements ActionListener {
 
@@ -48,6 +46,8 @@ public class ControladorUsuarioAdmin implements ActionListener {
         this.menuUsuarioAdmin.getVistaBuscar().getLimpiarButton().addActionListener(this);
 
         this.menuUsuarioAdmin.getVistaCrear().getCrearButton().addActionListener(this);
+
+        this.menuUsuarioAdmin.getVistaModificar().getModificarButton().addActionListener(this);
 
     }
 
@@ -171,6 +171,43 @@ public class ControladorUsuarioAdmin implements ActionListener {
         }
     }
 
+    public void accionModificar(ActionEvent e){
+        if (e.getSource() == menuUsuarioAdmin.getVistaModificar().getModificarButton()) {
+          int idPrestamo = Integer.parseInt(menuUsuarioAdmin.getVistaModificar().getTextFieldPrestamos().getText());
+          Prestamo p = gestionPrestamo.getMemoriaPrestamo().findById(idPrestamo);
+          if (p != null) {
+              if (!menuUsuarioAdmin.getVistaModificar().getTextFieldUsuario().getText().isBlank()){
+                  Usuario usuario = gestionUsuario.getMemoriaUsuario().findById(idPrestamo);
+                  if (usuario != null) {
+                      p.setUsuario(usuario);
+                  }
+
+              }
+              if (!menuUsuarioAdmin.getVistaModificar().getTextFieldEjemplar().getText().isBlank()){
+                  Ejemplar ejemplar = gestionEjemplar.getMemoriaEjemplar().findById(idPrestamo);
+                  if (ejemplar != null) {
+                      p.setEjemplar(ejemplar);
+                  }
+              }
+              if (menuUsuarioAdmin.getVistaModificar().getDateChooserInicio().isEnabled()){
+                  LocalDate LocalDate = menuUsuarioAdmin.getVistaModificar().getDateChooserInicio().getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                  p.setFechaInicio(LocalDate);
+              }
+              if (menuUsuarioAdmin.getVistaModificar().getDateChooserFin().isEnabled()){
+                  LocalDate LocalDate = menuUsuarioAdmin.getVistaModificar().getDateChooserFin().getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                  p.setFechaDevolucion(LocalDate);
+              }
+
+              gestionPrestamo.getMemoriaPrestamo().update(p);
+              JOptionPane.showMessageDialog(null, "se ha modificado Correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+
+          } else{
+              JOptionPane.showMessageDialog(null, "no se ha podido modificar.", "Información", JOptionPane.INFORMATION_MESSAGE);
+          }
+        }
+
+    }
+
 
 
 
@@ -179,6 +216,7 @@ public class ControladorUsuarioAdmin implements ActionListener {
         barraHorizontal(e);
         accionBusqueda(e);
         accionCrear(e);
+        accionModificar(e);
 
 
     }

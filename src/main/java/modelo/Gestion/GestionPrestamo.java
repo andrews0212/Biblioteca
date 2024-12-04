@@ -4,8 +4,6 @@ import modelo.DTO.Ejemplar;
 import modelo.DTO.Prestamo;
 import modelo.DTO.Usuario;
 import modelo.memoria.MemoriaGN;
-
-import javax.swing.*;
 import java.time.LocalDate;
 
 public class GestionPrestamo {
