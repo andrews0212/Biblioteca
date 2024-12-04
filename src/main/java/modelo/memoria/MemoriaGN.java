@@ -45,7 +45,7 @@ public class MemoriaGN<T,ID> {
                 }
             } else if (entityClass.equals(Usuario.class)){
                 Usuario usuario = (Usuario) t;
-                if (usuario.getNombre().equals(id)){
+                if (usuario.getId().equals(id)){
                     return t;
                 }
             } else if (entityClass.equals(Prestamo.class)){

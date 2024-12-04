@@ -8,7 +8,7 @@ import java.util.*;
 
 public class GestionEjemplar {
 
-    MemoriaGN<Ejemplar,String> memoriaEjemplar;
+    MemoriaGN<Ejemplar,Integer> memoriaEjemplar;
     Map<String, Integer> stockEjemplares;
 
     public GestionEjemplar() {
@@ -66,11 +66,11 @@ public class GestionEjemplar {
         }
     }
 
-    public MemoriaGN<Ejemplar, String> getMemoriaEjemplar() {
+    public MemoriaGN<Ejemplar, Integer> getMemoriaEjemplar() {
         return memoriaEjemplar;
     }
 
-    public void setMemoriaEjemplar(MemoriaGN<Ejemplar, String> memoriaEjemplar) {
+    public void setMemoriaEjemplar(MemoriaGN<Ejemplar, Integer> memoriaEjemplar) {
         this.memoriaEjemplar = memoriaEjemplar;
     }
 

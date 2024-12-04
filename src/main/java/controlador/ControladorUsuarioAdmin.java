@@ -1,5 +1,6 @@
 package controlador;
 
+import modelo.DTO.Ejemplar;
 import modelo.DTO.Prestamo;
 import modelo.DTO.Usuario;
 import modelo.Gestion.GestionEjemplar;
@@ -12,6 +13,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 public class ControladorUsuarioAdmin implements ActionListener {
@@ -42,6 +46,8 @@ public class ControladorUsuarioAdmin implements ActionListener {
         this.menuUsuarioAdmin.getVistaBuscar().getBuscarTodoButton().addActionListener(this);
         this.menuUsuarioAdmin.getVistaBuscar().getBuscarButton1().addActionListener(this);
         this.menuUsuarioAdmin.getVistaBuscar().getLimpiarButton().addActionListener(this);
+
+        this.menuUsuarioAdmin.getVistaCrear().getCrearButton().addActionListener(this);
 
     }
 
@@ -127,14 +133,52 @@ public class ControladorUsuarioAdmin implements ActionListener {
                 }
             }
         }
-
-
     }
+
+
+    private void accionCrear (ActionEvent e){
+        if (e.getSource() == menuUsuarioAdmin.getVistaCrear().getCrearButton()) {
+          int idUsuario = Integer.parseInt(menuUsuarioAdmin.getVistaCrear().getTextFieldUsuario().getText());
+          int idEjemplar = Integer.parseInt(menuUsuarioAdmin.getVistaCrear().getTextFieldEjemplar().getText());
+
+
+            // Convertir a LocalDate
+
+
+            Usuario usuario = gestionUsuario.getMemoriaUsuario().findById(idUsuario);
+            Ejemplar ejemplar = gestionEjemplar.getMemoriaEjemplar().findById(idEjemplar);
+
+            if (usuario != null && ejemplar != null) {
+                if (ejemplar.getEstado().equals("Disponible")){
+
+                    try{
+                        gestionPrestamo.crearPrestamo(usuario,ejemplar);
+                        JOptionPane.showInputDialog("Si se ha podido crear el prestamo");
+                    }catch (Exception ex){
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
+                    }
+
+
+                } else{
+                    JOptionPane.showInputDialog("El ejemplar no esta disponible");
+                }
+
+            } else {
+                JOptionPane.showInputDialog("No se ha podido crear el prestamo");
+            }
+
+
+        }
+    }
+
+
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         barraHorizontal(e);
         accionBusqueda(e);
-
+        accionCrear(e);
 
 
     }

@@ -9,13 +9,10 @@ public class VistaCrear {
     private JTextField textFieldUsuario;
     private JTextField textFieldEjemplar;
     private JButton crearButton;
-    private JPanel JpanelCalendar;
-    private JDateChooser dateChooser;
+
 
 
     public VistaCrear() {
-        dateChooser = new JDateChooser();
-        JpanelCalendar.add(dateChooser);
     }
 
     public JPanel getPanel1() {
@@ -50,19 +47,4 @@ public class VistaCrear {
         this.crearButton = crearButton;
     }
 
-    public JPanel getJpanelCalendar() {
-        return JpanelCalendar;
-    }
-
-    public void setJpanelCalendar(JPanel jpanelCalendar) {
-        JpanelCalendar = jpanelCalendar;
-    }
-
-    public JDateChooser getDateChooser() {
-        return dateChooser;
-    }
-
-    public void setDateChooser(JDateChooser dateChooser) {
-        this.dateChooser = dateChooser;
-    }
 }
