@@ -15,6 +15,10 @@ public class MenuUsuarioAdmin extends JDialog {
     private JPanel jpanelBuscar;
     private VistaCrear vistaCrear;
     private JPanel jpanelCrear;
+    private ModificarPrestamo vistaPrestamo;
+    private JPanel jpanelPrestamo;
+    private VistaEliminar vistaEliminar;
+    private JPanel jpanelEliminar;
 
 
     public MenuUsuarioAdmin() {
@@ -22,15 +26,54 @@ public class MenuUsuarioAdmin extends JDialog {
         setModal(true);
         vistaBuscar = new VistaBuscar();
         vistaCrear = new VistaCrear();
+        vistaPrestamo = new ModificarPrestamo();
+        vistaEliminar = new VistaEliminar();
 
         jpanelCrear = vistaCrear.getPanel1();
         jpanelBuscar = vistaBuscar.getPanelBusqueda();
+        jpanelPrestamo = vistaPrestamo.getPanel1();
+        jpanelEliminar = vistaEliminar.getPanel1();
 
 
-        jPanelContaint.add(jpanelCrear);
         jPanelContaint.add(jpanelBuscar);
+        jPanelContaint.add(jpanelCrear);
+        jPanelContaint.add(jpanelPrestamo);
+        jPanelContaint.add(jpanelEliminar);
 
 
+
+    }
+
+    public VistaEliminar getVistaEliminar() {
+        return vistaEliminar;
+    }
+
+    public void setVistaEliminar(VistaEliminar vistaEliminar) {
+        this.vistaEliminar = vistaEliminar;
+    }
+
+    public JPanel getJpanelEliminar() {
+        return jpanelEliminar;
+    }
+
+    public void setJpanelEliminar(JPanel jpanelEliminar) {
+        this.jpanelEliminar = jpanelEliminar;
+    }
+
+    public ModificarPrestamo getVistaPrestamo() {
+        return vistaPrestamo;
+    }
+
+    public void setVistaPrestamo(ModificarPrestamo vistaPrestamo) {
+        this.vistaPrestamo = vistaPrestamo;
+    }
+
+    public JPanel getJpanelPrestamo() {
+        return jpanelPrestamo;
+    }
+
+    public void setJpanelPrestamo(JPanel jpanelPrestamo) {
+        this.jpanelPrestamo = jpanelPrestamo;
     }
 
     public JButton getBuscarButton() {

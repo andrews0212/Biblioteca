@@ -33,21 +33,59 @@ public class ControladorUsuarioAdmin implements ActionListener {
         this.menuUsuarioAdmin.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.menuUsuarioAdmin.getCrearButton1().addActionListener(this);
         this.menuUsuarioAdmin.getBuscarButton().addActionListener(this);
+        this.menuUsuarioAdmin.getModificarButton().addActionListener(this);
+        this.menuUsuarioAdmin.getEliminarButton().addActionListener(this);
 
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
+
+    private void barraHorizontal (ActionEvent e){
         if (e.getSource() == menuUsuarioAdmin.getCrearButton1()) {
+            menuUsuarioAdmin.getJpanelEliminar().setVisible(false);
+            menuUsuarioAdmin.getJpanelPrestamo().setVisible(false);
             menuUsuarioAdmin.getJpanelBuscar().setVisible(false);
             menuUsuarioAdmin.getJpanelCrear().setVisible(true);
 
 
         } else if (e.getSource() == menuUsuarioAdmin.getBuscarButton()) {
+            menuUsuarioAdmin.getJpanelEliminar().setVisible(false);
+            menuUsuarioAdmin.getJpanelPrestamo().setVisible(false);
             menuUsuarioAdmin.getJpanelCrear().setVisible(false);
             menuUsuarioAdmin.getJpanelBuscar().setVisible(true);
 
 
+        } else if (e.getSource() == menuUsuarioAdmin.getModificarButton()) {
+            menuUsuarioAdmin.getJpanelEliminar().setVisible(false);
+            menuUsuarioAdmin.getJpanelCrear().setVisible(false);
+            menuUsuarioAdmin.getJpanelBuscar().setVisible(false);
+            menuUsuarioAdmin.getJpanelPrestamo().setVisible(true);
+
+        } else if (e.getSource() == menuUsuarioAdmin.getJpanelPrestamo()) {
+            menuUsuarioAdmin.getJpanelEliminar().setVisible(false);
+            menuUsuarioAdmin.getJpanelPrestamo().setVisible(false);
+            menuUsuarioAdmin.getJpanelBuscar().setVisible(false);
+            menuUsuarioAdmin.getJpanelCrear().setVisible(true);
+
+        } else if (e.getSource() == menuUsuarioAdmin.getEliminarButton()) {
+
+            menuUsuarioAdmin.getJpanelPrestamo().setVisible(false);
+            menuUsuarioAdmin.getJpanelBuscar().setVisible(false);
+            menuUsuarioAdmin.getJpanelCrear().setVisible(false);
+            menuUsuarioAdmin.getJpanelEliminar().setVisible(true);
+
         }
+    }
+    private void AccionBusqueda (ActionEvent e){
+        if (e.getSource() == menuUsuarioAdmin.getVistaBuscar().getBuscarTodoButton()) {
+            gestionPrestamo.getMemoriaPrestamo().findAll();
+
+        }
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        barraHorizontal(e);
+
+
+
     }
 
 
