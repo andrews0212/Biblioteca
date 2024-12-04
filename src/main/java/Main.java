@@ -13,11 +13,11 @@ public class Main {
     //1633
 
     public static void main(String[] args) {
-//        GestionUsuario gestion = new GestionUsuario();
-//        Login login = new Login();
-//        Controlador controlador = new Controlador(gestion, login);
-//        controlador.getLogin().setVisible(true);
-        ControladorUsuarioAdmin controladorUsuarioAdmin = new ControladorUsuarioAdmin(new GestionUsuario(), new GestionPrestamo(), new GestionEjemplar(), new GestionLibro(), new Usuario(), new MenuUsuarioAdmin());
-        controladorUsuarioAdmin.getMenuUsuarioAdmin().setVisible(true);
+        GestionUsuario gestion = new GestionUsuario();
+        Login login = new Login();
+        Controlador controlador = new Controlador(gestion, login);
+        controlador.getLogin().setVisible(true);
+//        ControladorUsuarioAdmin controladorUsuarioAdmin = new ControladorUsuarioAdmin(new GestionUsuario(), new GestionPrestamo(), new GestionEjemplar(), new GestionLibro(), new Usuario(), new MenuUsuarioAdmin());
+//        controladorUsuarioAdmin.getMenuUsuarioAdmin().setVisible(true);
     }
 }

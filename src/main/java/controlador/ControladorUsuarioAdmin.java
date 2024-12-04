@@ -52,6 +52,7 @@ public class ControladorUsuarioAdmin implements ActionListener {
 
 
 
+
     }
 
     private void barraHorizontal (ActionEvent e){

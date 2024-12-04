@@ -5,6 +5,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "prestamo")
@@ -80,4 +81,16 @@ public class Prestamo {
         this.fechaDevolucion = fechaDevolucion;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Prestamo prestamo = (Prestamo) o;
+        return Objects.equals(id, prestamo.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }

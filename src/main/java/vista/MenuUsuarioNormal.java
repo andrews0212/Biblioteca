@@ -8,6 +8,8 @@ public class MenuUsuarioNormal extends JDialog {
     private JScrollPane jScrollPane;
     private JTable table1;
     private JPanel jPanelContain;
+    private JButton verPrestamosButton;
+    private JButton entregarEjemplarButton;
 
 
     public MenuUsuarioNormal() {
@@ -16,6 +18,15 @@ public class MenuUsuarioNormal extends JDialog {
         table1.setModel(creacionTabla());
 
     }
+
+    public JButton getVerPrestamosButton() {
+        return verPrestamosButton;
+    }
+
+    public void setVerPrestamosButton(JButton verPrestamosButton) {
+        this.verPrestamosButton = verPrestamosButton;
+    }
+
     public DefaultTableModel creacionTabla(){
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Ejemplar");
@@ -24,7 +35,13 @@ public class MenuUsuarioNormal extends JDialog {
         return model;
     }
 
+    public JButton getEntregarEjemplarButton() {
+        return entregarEjemplarButton;
+    }
 
+    public void setEntregarEjemplarButton(JButton entregarEjemplarButton) {
+        this.entregarEjemplarButton = entregarEjemplarButton;
+    }
 
     public JScrollPane getjScrollPane() {
         return jScrollPane;
