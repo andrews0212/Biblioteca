@@ -1,6 +1,7 @@
 package vista;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class VistaBuscar {
     private JPanel panelBusqueda;
@@ -9,6 +10,16 @@ public class VistaBuscar {
     private JButton limpiarButton;
     private JTable table1;
     private JButton buscarTodoButton;
+
+    public VistaBuscar() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Id Prestamo");
+        model.addColumn("Id Usuario");
+        model.addColumn("Id Ejemplar");
+        model.addColumn("Fecha Inicio");
+        model.addColumn("Fecha Fin");
+        table1.setModel(model);
+    }
 
     public JPanel getPanelBusqueda() {
         return panelBusqueda;

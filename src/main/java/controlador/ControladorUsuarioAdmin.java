@@ -1,5 +1,6 @@
 package controlador;
 
+import modelo.DTO.Prestamo;
 import modelo.DTO.Usuario;
 import modelo.Gestion.GestionEjemplar;
 import modelo.Gestion.GestionLibro;
@@ -8,8 +9,10 @@ import modelo.Gestion.GestionUsuario;
 import vista.MenuUsuarioAdmin;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class ControladorUsuarioAdmin implements ActionListener {
 
@@ -35,6 +38,10 @@ public class ControladorUsuarioAdmin implements ActionListener {
         this.menuUsuarioAdmin.getBuscarButton().addActionListener(this);
         this.menuUsuarioAdmin.getModificarButton().addActionListener(this);
         this.menuUsuarioAdmin.getEliminarButton().addActionListener(this);
+
+        this.menuUsuarioAdmin.getVistaBuscar().getBuscarTodoButton().addActionListener(this);
+        this.menuUsuarioAdmin.getVistaBuscar().getBuscarButton1().addActionListener(this);
+        this.menuUsuarioAdmin.getVistaBuscar().getLimpiarButton().addActionListener(this);
 
     }
 
@@ -74,15 +81,59 @@ public class ControladorUsuarioAdmin implements ActionListener {
 
         }
     }
-    private void AccionBusqueda (ActionEvent e){
-        if (e.getSource() == menuUsuarioAdmin.getVistaBuscar().getBuscarTodoButton()) {
-            gestionPrestamo.getMemoriaPrestamo().findAll();
+    private void accionBusqueda (ActionEvent e){
 
+
+        if (e.getSource() == menuUsuarioAdmin.getVistaBuscar().getBuscarTodoButton()) {
+
+            DefaultTableModel defaultTableModel = (DefaultTableModel) menuUsuarioAdmin.getVistaBuscar().getTable1().getModel();
+            defaultTableModel.setRowCount(0);
+            for (Prestamo prestamo :  gestionPrestamo.getMemoriaPrestamo().findAll()) {
+                defaultTableModel.addRow(new Object[]{prestamo.getId(), prestamo.getUsuario().getId(), prestamo.getEjemplar().getId(), prestamo.getFechaInicio().toString(), prestamo.getFechaDevolucion().toString()});
+            }
+            menuUsuarioAdmin.getVistaBuscar().getTable1().setModel(defaultTableModel);
+        } else if (e.getSource() == menuUsuarioAdmin.getVistaBuscar().getLimpiarButton()) {
+            DefaultTableModel defaultTableModel = (DefaultTableModel) menuUsuarioAdmin.getVistaBuscar().getTable1().getModel();
+            defaultTableModel.setRowCount(0);
+        } else if (e.getSource() == menuUsuarioAdmin.getVistaBuscar().getBuscarButton1()) {
+            int id = Integer.parseInt(menuUsuarioAdmin.getVistaBuscar().getTextField1().getText());
+            DefaultTableModel defaultTableModel = (DefaultTableModel) menuUsuarioAdmin.getVistaBuscar().getTable1().getModel();
+
+            boolean existe = false;
+
+            // Iterar sobre los préstamos y verificar si ya están en la tabla
+            for (Prestamo prestamo : gestionPrestamo.getMemoriaPrestamo().findAll()) {
+                if (prestamo.getId() == id) {
+                    existe = false;
+
+                    // Verificar si el ID ya existe en la tabla
+                    for (int i = 0; i < defaultTableModel.getRowCount(); i++) {
+                        if ((int) defaultTableModel.getValueAt(i, 0) == prestamo.getId()) {
+                            existe = true;
+                            break;
+                        }
+                    }
+
+                    // Si no existe, agregarlo
+                    if (!existe) {
+                        defaultTableModel.addRow(new Object[]{
+                                prestamo.getId(),
+                                prestamo.getUsuario().getId(),
+                                prestamo.getEjemplar().getId(),
+                                prestamo.getFechaInicio().toString(),
+                                prestamo.getFechaDevolucion().toString()
+                        });
+                    }
+                }
+            }
         }
+
+
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         barraHorizontal(e);
+        accionBusqueda(e);
 
 
 

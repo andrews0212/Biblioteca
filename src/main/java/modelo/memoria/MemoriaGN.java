@@ -40,7 +40,7 @@ public class MemoriaGN<T,ID> {
                 }
             }else if(entityClass.equals(Ejemplar.class)){
                 Ejemplar ejemplar = (Ejemplar) t;
-                if (ejemplar.getIsbn().equals(id)){
+                if (ejemplar.getId().equals(id)){
                     return t;
                 }
             } else if (entityClass.equals(Usuario.class)){
